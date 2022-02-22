@@ -12,8 +12,14 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 Syntax highlighted code block
 
 # Header 1
+CyberPath Blog
+
 ## Header 2
+My way of recording and tracking my progress and achievements learning infosec!
+
+
 ### Header 3
+
 
 - Bulleted
 - List
