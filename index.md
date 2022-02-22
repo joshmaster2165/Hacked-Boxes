@@ -9,5 +9,5 @@ This blog is a way for me to record and track my infosec and computer science ac
 Im intrested in ML, Cyber Security, Blockchain and the Lightning Network. 
 As well as Skiing, Nature, Travel and Crypto currencys 
 
-```markdown
 FIRST POST WORK IN PROGRESS 
+
