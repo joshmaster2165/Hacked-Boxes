@@ -10,8 +10,4 @@ Im intrested in ML, Cyber Security, Blockchain and the Lightning Network.
 As well as Skiing, Nature, Travel and Crypto currencys 
 
 ```markdown
-FIRST POST WORK IN PROGRESS
-
-
-
-
+FIRST POST WORK IN PROGRESS 
